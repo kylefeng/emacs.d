@@ -3,3 +3,4 @@ custom.el
 auto-save-list
 .lsp-session*
 .#*
+bookmarks
