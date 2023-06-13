@@ -16,17 +16,18 @@
              (lambda (new-frame)
                (select-frame new-frame)
                (when (display-graphic-p)
-                 (set-font "PragramtaPro Mono" "终端更纱黑体-简 Nerd" 13 13))))
+                 (set-font "终端更纱黑体-简 Nerd" "终端更纱黑体-简 Nerd" 13 13))))
 
 (when (display-graphic-p)
-    (set-font "PragmataPro Mono" "终端更纱黑体-简 Nerd" 13 13))
+    (set-font "终端更纱黑体-简 Nerd" "终端更纱黑体-简 Nerd" 13 13))
 
 (use-package modus-themes
   :init
   (load-theme 'modus-operandi t t)
   (load-theme 'modus-vivendi t t)
   (load-theme 'modus-operandi-tritanopia t t)
-  (enable-theme 'modus-operandi-tritanopia)
+  (load-theme 'modus-operandi-tinted t t)
+  (enable-theme 'modus-operandi)
   )
   
 (use-package smart-mode-line

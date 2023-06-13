@@ -56,8 +56,7 @@
   :init (exec-path-from-shell-initialize))
 
 ;; org-modern
-(use-package org-modern
-  :hook (org-mode . org-modern-mode))
+(use-package org-modern)
 
 (provide 'init-package)
 
