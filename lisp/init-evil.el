@@ -9,6 +9,10 @@
 (require 'evil)
 (evil-mode 1)
 
+(with-eval-after-load 'evil-maps (define-key evil-motion-state-map (kbd "TAB") nil))
+
+(setq evil-want-C-i-jump nil)
+
 (evil-set-undo-system 'undo-redo)
 
 ;; Store more undo history to prevent loss of data
