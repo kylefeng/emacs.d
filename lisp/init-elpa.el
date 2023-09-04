@@ -1,9 +1,11 @@
 (setq package-archives
-      '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+      '(
         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
         ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
         ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
-        ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")))
+        ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+        ))
 
 (setq package-check-signature nil)
 

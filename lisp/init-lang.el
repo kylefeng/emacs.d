@@ -48,4 +48,7 @@
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
+(use-package haskell-mode)
+
 (provide 'init-lang)
