@@ -58,5 +58,8 @@
 ;; org-modern
 (use-package org-modern)
 
+(use-package keycast
+  :init (keycast-mode-line-mode t))
+
 (provide 'init-package)
 

@@ -5,6 +5,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (require 'init-const)
+(require 'init-utils)
 (require 'init-kbd)
 (require 'init-startup)
 (require 'init-elpa)
