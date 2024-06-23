@@ -1,6 +1,15 @@
+;;; init-ui.el -- ui configs
+;;; Commentary:
+;;; Code:
+
 (set-frame-position (selected-frame) 0 0)
 (set-frame-width (selected-frame) 180)
 (set-frame-height (selected-frame) 60)
+
+(use-package good-scroll
+  :ensure t
+  :if window-system
+  :init (good-scroll-mode))
 
 
 ;; 终端更纱黑体-简 Nerd
@@ -16,10 +25,10 @@
              (lambda (new-frame)
                (select-frame new-frame)
                (when (display-graphic-p)
-                 (set-font "终端更纱黑体-简 Nerd" "终端更纱黑体-简 Nerd" 13 13))))
+                 (set-font "Sarasa Mono CL" "Sarasa Mono CL" 13 13))))
 
 (when (display-graphic-p)
-    (set-font "终端更纱黑体-简 Nerd" "终端更纱黑体-简 Nerd" 13 13))
+    (set-font "Sarasa Mono CL" "Sarasa Mono CL" 13 13))
 
 (use-package modus-themes
   :init
@@ -36,7 +45,9 @@
 	sml/theme 'respectful)
   (sml/setup))
 
-(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
+(setq display-line-numbers-type 'relative)
+
 (provide 'init-ui)
+;;; init-ui.el ends here

@@ -1,5 +1,14 @@
+;;; init-lang.el -- programming languages configs
+;;; Commentary:
+;;; Code:
 (setq-default tab-width 4
               indent-tabs-mode nil)
+
+;; 高亮括号
+(add-hook 'prog-mode-hook #'show-paren-mode)
+
+;; 折叠代码
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 
 (use-package lsp-mode
   :init
@@ -51,4 +60,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; haskell
 (use-package haskell-mode)
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; scheme
+(use-package geiser-guile)
+
+
 (provide 'init-lang)
+;;; init-lang.el ends here

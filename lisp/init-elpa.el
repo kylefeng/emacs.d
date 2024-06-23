@@ -1,3 +1,9 @@
+;;; init-elpa.el -- elpa
+;;; Commentary:
+;;; Code:
+
+(require 'package)
+
 (setq package-archives
       '(
         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
@@ -26,6 +32,5 @@
 (setq use-package-expand-minimally t)
 (setq use-package-verbose t)
 
-(require 'package)
-
 (provide 'init-elpa)
+;;; init-elpa.el ends here

@@ -1,3 +1,7 @@
+;;; init-evil.el -- evil-mode configs
+;;; Commentary:
+;;; Code:
+
 (unless (package-installed-p 'evil)
   (package-refresh-contents)
   (package-install 'evil))
@@ -58,3 +62,4 @@
 
 
 (provide 'init-evil)
+;;; init-evil.el ends here

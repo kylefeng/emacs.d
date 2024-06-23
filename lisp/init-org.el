@@ -1,9 +1,11 @@
+;;; org.el -- org-mod configs
+;;; Commentary:
+;;; Code:
+
+
 (require 'org)
-(require 'org-modern)
 
 (with-eval-after-load 'org
-  (global-org-modern-mode)
-
   (defvar org-agenda-dir "gtd org files location")
   (setq-default org-agenda-dir "/Users/kylefeng/development/org")
   
@@ -11,7 +13,7 @@
     ;; Edit settings
     org-tags-column -128 
     org-catch-invisible-edits 'show-and-error
-    org-startup-indented t
+    org-starup-indented t
     org-auto-align-tags nil
     org-special-ctrl-a/e t
     org-insert-heading-respect-content t
@@ -92,3 +94,4 @@
   )
 
 (provide 'init-org)
+;;; init-org.el ends here
