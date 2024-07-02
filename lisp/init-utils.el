@@ -1,3 +1,7 @@
+;;; init-utils.el -- utilities
+;;; Commentary:
+;;; Code:
+
 (defun switch-to-scratch-and-insert-text ()
   (interactive)
   (save-excursion
@@ -15,3 +19,4 @@
 (define-key lisp-interaction-mode-map (kbd "C-c C-c") #'mp-elisp-mode-eval-buffer)
 
 (provide 'init-utils)
+;;; init-utils.el ends here

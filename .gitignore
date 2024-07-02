@@ -6,3 +6,6 @@ auto-save-list
 bookmarks
 amx-items
 transient   
+.cache/
+.mc-lists.el
+projects

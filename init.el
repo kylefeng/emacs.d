@@ -4,7 +4,7 @@
 ;;; Code:
 
 ;; Produce backtraces whe errors occur: can be helpful to diagnose startup issues
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 (let ((minver "27.1"))
   (when (version< emacs-version minver)
@@ -39,6 +39,7 @@
 (require 'init-ui)
 (require 'init-lang)
 (require 'init-org)
+(require 'init-python)
 
 (when (file-exists-p custom-file)
   (load-file custom-file))

@@ -1,6 +1,5 @@
 ;;; init-const.el -- define constants
 ;;; Commentary:
-
 ;;; Code:
 
 (defconst *is-mac* (eq system-type 'darwin))

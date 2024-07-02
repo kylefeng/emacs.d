@@ -50,16 +50,30 @@
 
 ;; company
 (use-package company
+  :ensure t
+  :init (global-company-mode)
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :hook (after-init . global-company-mode)
-  :config (setq company-minimum-prefix-length 1
-                company-selection-wrap-around t
-		company-backends '(company-capf company-files company-keywords)
-		company-idle-delay 0.2))
+  :config
+  (setq company-minimum-prefix-length 1)
+  (setq company-selection-wrap-around t)
+  (setq company-show-quick-access t)
+  (setq company-backends '(company-capf company-files company-keywords))
+  (setq company-idle-delay 0.2)
+  (setq company-transformers '(company-sort-by-occurrence)))
+
+(use-package company-box
+  :ensure t
+  :if window-system
+  :hook (company-mode . company-box-mode))
 
 ;; flycheck
 (use-package flycheck
-  :hook (prog-mode . flycheck-mode))
+  :ensure t
+  :config
+  (setq truncate-lines nil)
+  :hook
+  (prog-mode . flycheck-mode))
 
 ;; which key
 (use-package which-key
@@ -120,6 +134,82 @@
               ("M-a" . marginalia-cycle)))
 
 
+
+;; mulit-cursors
+(use-package multiple-cursors
+  :ensure t
+  :after hydra
+  :bind
+  (("C-x C-h m" . hydra-multiple-cursors/body)
+   ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
+  :hydra
+  (hydra-multiple-cursors
+  (:hint nil)
+  "
+Up^^       Down^^      Miscellaneous      % 2(mc/num-cursors) cursor%s(if (> (mc/num-cursors) 1) \"s\" \"\")
+------------------------------------------------------------------
+ [_p_]  Prev   [_n_]  Next   [_l_] Edit lines [_0_] Insert numbers
+ [_P_]  Skip   [_N_]  Skip   [_a_] Mark all  [_A_] Insert letters
+ [_M-p_] Unmark  [_M-n_] Unmark  [_s_] Search   [_q_] Quit
+ [_|_] Align with input CHAR    [Click] Cursor at point"
+  ("l" mc/edit-lines :exit t)
+  ("a" mc/mark-all-like-this :exit t)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+  ("|" mc/vertical-align)
+  ("s" mc/mark-all-in-region-regexp :exit t)
+  ("0" mc/insert-numbers :exit t)
+  ("A" mc/insert-letters :exit t)
+  ("<mouse-1>" mc/add-cursor-on-click)
+  ;; Help with click recognition in this hydra
+  ("<down-mouse-1>" ignore)
+  ("<drag-mouse-1>" ignore)
+  ("q" nil)))
+
+;; tiny
+(use-package tiny
+  :ensure t)
+
+;; highlight-symbol
+(use-package highlight-symbol
+  :ensure t
+  :init (highlight-symbol-mode)
+  :bind ("<f3>" . highlight-symbol))
+
+
+;; rainbow-delimiters
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+
+(use-package yasnippet
+ :ensure t
+ :hook
+ (prog-mode . yas-minor-mode)
+ :config
+ (yas-reload-all)
+ ;; add company-yasnippet to company-backends
+ (defun company-mode/backend-with-yas (backend)
+  (if (and (listp backend) (member 'company-yasnippet backend))
+   backend
+   (append (if (consp backend) backend (list backend))
+        '(:with company-yasnippet))))
+ (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+ ;; unbind <TAB> completion
+ (define-key yas-minor-mode-map [(tab)]    nil)
+ (define-key yas-minor-mode-map (kbd "TAB")  nil)
+ (define-key yas-minor-mode-map (kbd "<tab>") nil)
+ :bind
+ (:map yas-minor-mode-map ("S-<tab>" . yas-expand)))
+  
+(use-package yasnippet-snippets
+ :ensure t
+ :after yasnippet)
 
 (provide 'init-package)
 ;;; init-package.el ends here
