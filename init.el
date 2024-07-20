@@ -36,6 +36,7 @@
 (require 'init-package)
 (require 'init-kbd)
 (require 'init-evil)
+(require 'init-font)
 (require 'init-ui)
 (require 'init-lang)
 (require 'init-org)
